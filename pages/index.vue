@@ -49,37 +49,7 @@
     </div>
 
     <div
-      class="relative z-10 bg-white rounded-t-2xl h-1 mt-15 overflow-hidden hidden py-6"
-    >
-      <div>
-        <p class="font-bold text-xl px-10 pb-1 border-b border-dark-50">
-          Next 9 Days
-        </p>
-
-        <div>
-          <div
-            class="flex items-center py-2 border-b border-stone-400 text-sm"
-            v-for="forcast in forcasts"
-          >
-            <img
-              :src="`weather/day/${forcast.icon}.png`"
-              alt=""
-              class="w-12 ml-8"
-            />
-
-            <p class="ml-6">{{ forcast.status }}</p>
-
-            <p class="flex flex-col items-end ml-auto mr-6">
-              <span>{{ forcast.day.name }}</span>
-              <span class="text-base font-bold">{{ forcast.day.num }}</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="absolute bottom-32 left-0 right-0 mx-auto bg-stone-700/50 py-6 px-4 w-11/12 mx-auto rounded-xl text-white grid grid-rows-3 grid-cols-2 gap-y-6 gap-x-4"
+      class="absolute bottom-24 left-0 right-0 mx-auto bg-stone-700/50 py-6 px-4 w-11/12 mx-auto rounded-xl text-white grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-4"
     >
       <div class="flex gap-2">
         <svg class="relative w-8 h-8">
@@ -147,6 +117,44 @@
         </div>
       </div>
     </div>
+
+    <div class="translate-y-full mt-auto">
+      <button
+        class="bg-green-500/85 relative -top-16 mb-4 text-white flex h-12 w-11/12 mx-auto items-center justify-center rounded-lg"
+      >
+        Show weather forecast
+      </button>
+
+      <div
+        class="relative z-10 bg-white rounded-t-2xl h-96 overflow-hidden py-6"
+      >
+        <div>
+          <p class="font-bold text-xl px-10 pb-1 border-b border-dark-50">
+            Next 9 Days
+          </p>
+
+          <div>
+            <div
+              class="flex items-center py-2 border-b border-stone-400 text-sm"
+              v-for="forcast in forcasts"
+            >
+              <img
+                :src="`weather/day/${forcast.icon}.png`"
+                alt=""
+                class="w-12 ml-8"
+              />
+
+              <p class="ml-6">{{ forcast.status }}</p>
+
+              <p class="flex flex-col items-end ml-auto mr-6">
+                <span>{{ forcast.day.name }}</span>
+                <span class="text-base font-bold">{{ forcast.day.num }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -211,6 +219,13 @@ export default {
         },
       ],
     };
+  },
+  setup() {
+    const ip = useState("ip");
+
+    onBeforeMount(() => {
+      console.log(ip.value); // user IP
+    });
   },
 };
 </script>

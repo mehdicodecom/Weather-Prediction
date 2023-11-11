@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // devtools: { enabled: true },
-  modules: ["@unocss/nuxt"],
+  devtools: { enabled: false },
   ssr: "server",
   target: "static",
   // experimental: {
@@ -13,4 +12,6 @@ export default defineNuxtConfig({
     },
   },
   css: ["@/assets/css/main.css"],
+  modules: ["@unocss/nuxt"],
+  plugins: ["~/plugins/ip.js"],
 });
