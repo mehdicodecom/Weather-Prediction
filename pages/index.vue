@@ -26,14 +26,31 @@
 
       <div>
         <p class="relative">
-          <span class="text-4xl font-bold">25</span>
-          <span class="absolute top-0 text-5xl">°</span>
+          <span class="text-5xl font-bold">25</span>
+          <sup class="absolute top-0 text-5xl">°</sup>
+          <span class="text-xl ml-1">avg</span>
         </p>
-        <h3 class="font-bol">Sunny</h3>
+        <h3 class="font-bold">Sunny</h3>
+      </div>
+
+      <div class="mt-8 flex gap-10">
+        <p class="relative">
+          <span class="text-3xl font-bold">38</span>
+          <sup class="absolute top-0 text-3xl">°</sup>
+          <span class="text-sm ml-1">Max temp</span>
+        </p>
+
+        <p class="relative">
+          <span class="text-3xl font-bold">15</span>
+          <sup class="absolute top-0 text-3xl">°</sup>
+          <span class="text-sm ml-1">Min temp</span>
+        </p>
       </div>
     </div>
 
-    <div class="bg-white rounded-t-2xl h-90 mt-auto py-8">
+    <div
+      class="relative z-10 bg-white rounded-t-2xl h-1 mt-15 overflow-hidden hidden py-6"
+    >
       <div>
         <p class="font-bold text-xl px-10 pb-1 border-b border-dark-50">
           Next 9 Days
@@ -60,6 +77,76 @@
         </div>
       </div>
     </div>
+
+    <div
+      class="absolute bottom-32 left-0 right-0 mx-auto bg-stone-700/50 py-6 px-4 w-11/12 mx-auto rounded-xl text-white grid grid-rows-3 grid-cols-2 gap-y-6 gap-x-4"
+    >
+      <div class="flex gap-2">
+        <svg class="relative w-8 h-8">
+          <use href="icons.svg#rain"></use>
+        </svg>
+
+        <div class="flex flex-col">
+          <span class="text-xl">30%</span>
+          <p class="text-sm">Raining chance</p>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <svg class="relative w-8 h-8">
+          <use href="icons.svg#snow"></use>
+        </svg>
+
+        <div class="flex flex-col">
+          <span class="text-xl">30%</span>
+          <p class="text-sm">Snowfall chance</p>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <svg class="relative w-8 h-8">
+          <use href="icons.svg#humidity"></use>
+        </svg>
+
+        <div class="flex flex-col">
+          <span class="text-xl">65%</span>
+          <p class="text-sm">Humidity</p>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <svg class="relative w-8 h-8">
+          <use href="icons.svg#wind"></use>
+        </svg>
+
+        <div class="flex flex-col">
+          <span class="text-xl">20.5 km/h</span>
+          <p class="text-sm">Wind Speed</p>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <svg class="relative w-8 h-8">
+          <use href="icons.svg#uv"></use>
+        </svg>
+
+        <div class="flex flex-col">
+          <span class="text-xl">7</span>
+          <p class="text-sm">Ultraviolet index</p>
+        </div>
+      </div>
+
+      <div class="flex gap-2">
+        <svg class="relative w-8 h-8">
+          <use href="icons.svg#eye"></use>
+        </svg>
+
+        <div class="flex flex-col">
+          <span class="text-xl">15 km</span>
+          <p class="text-sm">Visibility</p>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -74,7 +161,7 @@ export default {
             num: "07",
           },
           icon: "113",
-          temp: "25",
+          avgtemp_c: "25",
           status: "A FULL DAY SUNSHINE",
         },
         {
