@@ -59,7 +59,7 @@ export default {
   },
   data() {
     return {
-      showForecasts: true,
+      showForecasts: false,
     };
   },
   computed: {

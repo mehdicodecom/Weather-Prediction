@@ -1,8 +1,12 @@
 <template>
   <section
-    class="relative mx-auto mt-14 rounded-lg h-180 overflow-hidden w-100 shadow-lg flex flex-col"
+    class="relative rounded-lg h-180 overflow-hidden md:(w-100 mt-14 mx-auto) xs:(w-90 mt-0 roundedn-none) shadow-lg flex flex-col"
   >
-    <img src="imgs/sunny.jpg" alt="" class="w-full rounded-lg absolute -z-20" />
+    <img
+      :src="getImage"
+      alt=""
+      class="w-full h-full rounded-lg absolute -z-20"
+    />
 
     <div class="px-6 text-white">
       <Search @search="searchByCity" />
@@ -41,12 +45,52 @@ export default {
       searchByCity,
     };
   },
+  data() {
+    return {
+      imgURL: null,
+    };
+  },
   computed: {
     todayWeather() {
       return this.weatherData.forecast.forecastday[0].day;
     },
     forecasts() {
       return this.weatherData.forecast.forecastday;
+    },
+    currentWeather() {
+      return this.weatherData.current;
+    },
+    getImage() {
+      let dayOrNight = this.currentWeather.is_day ? "day" : "night";
+      let imgName = this.currentWeather.condition.text;
+      let condition = this.currentWeather.condition.text.toLowerCase();
+      let imgFolder = `imgs/${dayOrNight}/`;
+
+      let existedFileNames = [
+        "Sunny",
+        "Blowing snow",
+        "Clear",
+        "cloudy",
+        "mist",
+        "overcast",
+        "Partly cloudy",
+        "Patchy freezing drizzle possible",
+        "Patchy rain possible",
+        "Patchy sleet possible",
+        "Patchy snow possible",
+      ];
+      if (!existedFileNames.includes(imgName)) {
+        if (condition.includes(" rain ")) {
+          imgName = "Patchy rain possible";
+        } else if (condition.includes(" snow ")) {
+          imgName = "Patchy freezing drizzle possible";
+        } else {
+          imgName = "Partly cloudy";
+        }
+      }
+
+      let imgURL = `${imgFolder + imgName}.jpg`;
+      return imgURL;
     },
   },
 };

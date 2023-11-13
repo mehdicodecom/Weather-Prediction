@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute bottom-24 left-0 right-0 mx-auto bg-stone-700/50 py-6 px-4 w-11/12 mx-auto rounded-xl text-white grid grid-rows-3 grid-cols-2 gap-y-7 gap-x-4"
+    class="absolute bottom-24 left-0 right-0 mx-auto bg-stone-700/50 py-6 px-4 w-11/12 mx-auto rounded-xl text-white grid grid-rows-3 grid-cols-2 gap-y-7 md:gap-x-4 xs:gap-x-2"
   >
     <div class="flex gap-2">
       <svg class="relative w-8 h-8">
