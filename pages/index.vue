@@ -5,29 +5,49 @@
     <img src="imgs/sunny.jpg" alt="" class="w-full rounded-lg absolute -z-20" />
 
     <div class="px-6 text-white">
-      <div class="flex justify-between mb-6 mt-8">
-        <Location />
-
-        <Search />
+      <Search @search="searchByCity" />
+      <div class="mb-6 mt-20">
+        <Location :location="weatherData.location" />
       </div>
 
-      <Today-Temperature />
+      <Today-Temperature :today="todayWeather" />
     </div>
+    <Today-WeatherDetails :today="todayWeather" />
 
-    <Today-WeatherDetails />
-
-    <Forecasts />
+    <Forecasts :forecasts="forecasts" />
   </section>
 </template>
 
 <script>
 export default {
   setup() {
+    const apiKey = "986f6a0669254a4c84e95154231011";
     const ip = useState("ip");
+    const { data, pending } = useLazyFetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${ip.value}&days=11&aqi=no&alerts=no`
+    );
 
-    onBeforeMount(() => {
-      console.log(ip.value); // user IP
-    });
+    const searchByCity = async (city) => {
+      const url = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=11&aqi=no&alerts=no`;
+
+      await $fetch(url).then((res) => {
+        data.value = res;
+      });
+    };
+
+    return {
+      weatherData: data,
+      isLoading: pending,
+      searchByCity,
+    };
+  },
+  computed: {
+    todayWeather() {
+      return this.weatherData.forecast.forecastday[0].day;
+    },
+    forecasts() {
+      return this.weatherData.forecast.forecastday;
+    },
   },
 };
 </script>

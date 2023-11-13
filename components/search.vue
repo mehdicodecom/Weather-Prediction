@@ -1,15 +1,34 @@
 <template>
-  <span
-    class="inline-flex items-center justify-center bg-white h-10 w-10 rounded-full"
-  >
-    <svg class="relative w-5 h-5 text-gray-500">
+  <label class="absolute right-6 top-8 t3s h-10 rounded-full">
+    <input
+      placeholder="Country or City"
+      v-model="city"
+      @keyup.enter="searchByCity"
+      type="text"
+      class="inline-flex text-sm items-center justify-center indent-4 bg-white h-10 w-38 rounded-full text-dark-700"
+    />
+
+    <svg class="absolute top-2.5 right-2.5 w-5 h-5 text-gray-500">
       <use href="icons.svg#search"></use>
     </svg>
-  </span>
+  </label>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      city: null,
+    };
+  },
+  methods: {
+    searchByCity() {
+      if (this.city.length > 2) {
+        this.$emit("search", this.city);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped></style>

@@ -8,7 +8,7 @@
       </svg>
 
       <div class="flex flex-col">
-        <span class="text-xl">30%</span>
+        <span class="text-xl">{{ today.daily_chance_of_rain }}%</span>
         <p class="text-sm">Raining chance</p>
       </div>
     </div>
@@ -19,7 +19,7 @@
       </svg>
 
       <div class="flex flex-col">
-        <span class="text-xl">5%</span>
+        <span class="text-xl">{{ today.daily_chance_of_snow }}%</span>
         <p class="text-sm">Snowfall chance</p>
       </div>
     </div>
@@ -30,7 +30,7 @@
       </svg>
 
       <div class="flex flex-col">
-        <span class="text-xl">65%</span>
+        <span class="text-xl">{{ today.avghumidity }}%</span>
         <p class="text-sm">Humidity</p>
       </div>
     </div>
@@ -41,7 +41,7 @@
       </svg>
 
       <div class="flex flex-col">
-        <span class="text-xl">20.5 km/h</span>
+        <span class="text-xl">{{ today.maxwind_kph }} km/h</span>
         <p class="text-sm">Wind Speed</p>
       </div>
     </div>
@@ -52,7 +52,7 @@
       </svg>
 
       <div class="flex flex-col">
-        <span class="text-xl">7</span>
+        <span class="text-xl">{{ today.uv }}</span>
         <p class="text-sm">Ultraviolet index</p>
       </div>
     </div>
@@ -63,7 +63,7 @@
       </svg>
 
       <div class="flex flex-col">
-        <span class="text-xl">15 km</span>
+        <span class="text-xl">{{ today.avgvis_km }} km</span>
         <p class="text-sm">Visibility</p>
       </div>
     </div>
@@ -71,7 +71,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    today: {
+      type: Object,
+    },
+  },
+};
 </script>
 
 <style scoped></style>
