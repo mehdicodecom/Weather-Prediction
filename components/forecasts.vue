@@ -20,7 +20,7 @@
         class="absolute top-2.5 right-4 flex items-center gap-2 cursor-pointer"
       >
         <svg class="w-6 h-6 text-red-500">
-          <use href="icons.svg#close"></use>
+          <use href="/icons.svg#close"></use>
         </svg>
         <p class="text-sm text-red-500">Hide</p>
       </div>

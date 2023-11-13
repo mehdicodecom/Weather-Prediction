@@ -18,6 +18,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "public-ip": "^6.0.1"
+    "public-ip": "^6.0.1",
+    "unocss": "^0.57.3"
   }
 }
