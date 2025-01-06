@@ -1,9 +1,14 @@
-yarn# Nuxt 3 Minimal Starter
-
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+# Weather App (weather forecast)
+## Using Nuxt 3, UnoCSS & 3rd party API
+### Live demo link: https://mehdicode.com/weather/
+#### Screenshots of app:
+![Tehran Weather](public/readme/tehran.png)
+![Canada Weather](public/readme/canada.png)
+![NewYork Weather](public/readme/newyork.png)
+![Forecast Weather](public/readme/forecast.png)
 
 ## Setup
-
+Use node version above 20 preferably
 Make sure to install the dependencies:
 
 ```bash
