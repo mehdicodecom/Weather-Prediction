@@ -28,14 +28,16 @@
 <script>
 export default {
   setup() {
-    const apiKey = "986f6a0669254a4c84e95154231011";
+    const config = useRuntimeConfig();
+    const baseUrl = config.public.baseUrl
+    const apiKey = config.public.apiKey
     const ip = useState("ip");
     const { data, pending } = useLazyFetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${ip.value}&days=11&aqi=no&alerts=no`
+      `${baseUrl}/forecast.json?key=${apiKey}&q=${ip.value}&days=11&aqi=no&alerts=no`
     );
 
     const searchByCity = async (city) => {
-      const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${city}&days=11&aqi=no&alerts=no`;
+      const url = `${baseUrl}/forecast.json?key=${apiKey}&q=${city}&days=11&aqi=no&alerts=no`;
 
       await $fetch(url).then((res) => {
         data.value = res;
